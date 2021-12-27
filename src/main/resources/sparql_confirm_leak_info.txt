@@ -1,0 +1,8 @@
+PREFIX  rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX  owl: <http://www.w3.org/2002/07/owl#>
+PREFIX  sc: <urn:soap/crime/ontology#>
+SELECT ?insider ?outsider
+WHERE { ?insider a sc:LeakInfoSourcePeople       ;
+           sc:canShareSensitiveInfoIndirectTo ?outsider .
+        ?outsider  a sc:LeakInfoDestinationPeople .
+}

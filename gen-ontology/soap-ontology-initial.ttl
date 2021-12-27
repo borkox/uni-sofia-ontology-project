@@ -1,0 +1,109 @@
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sc:   <urn:soap/crime/ontology#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+sc:canShareSensitiveInfoIndirectTo
+        rdf:type  owl:ObjectProperty .
+
+sc:Man  rdf:type         owl:Class ;
+        rdfs:subClassOf  sc:Person .
+
+sc:worksFor  rdf:type  owl:ObjectProperty ;
+        rdfs:range  sc:Project , sc:Company .
+
+sc:isPartOfConversation
+        rdf:type     owl:ObjectProperty ;
+        rdfs:domain  sc:Person ;
+        rdfs:range   sc:Conversation .
+
+sc:canShareSensitiveInfoTo
+        rdf:type     owl:ObjectProperty ;
+        rdfs:domain  sc:Person ;
+        rdfs:range   sc:Person .
+
+sc:peter  rdf:type          sc:Man ;
+        sc:loveButNotLoved  sc:laura ;
+        sc:worksFor         sc:roboSoapStrategyProject , sc:soapAcademyIntCompany .
+
+sc:peterAndJohnChat  rdf:type          sc:OnlineConversation ;
+        sc:hasConversationParticipant  sc:john , sc:peter .
+
+sc:laura  rdf:type          sc:Woman ;
+        sc:isGoodFriendTo   sc:riki , sc:sam ;
+        sc:loveButNotLoved  sc:john ;
+        sc:worksFor         sc:soapAcademyIntCompany .
+
+sc:Person  rdf:type  owl:Class .
+
+sc:loveButNotLoved  rdf:type  owl:FunctionalProperty , owl:ObjectProperty ;
+        rdfs:domain  sc:Person ;
+        rdfs:range   sc:Person .
+
+sc:Company  rdf:type  owl:Class .
+
+sc:Event  rdf:type  owl:Class .
+
+sc:WitnessedEvent  rdf:type  owl:Class ;
+        rdfs:subClassOf  sc:Event .
+
+sc:roboSoapStrategyProject
+        rdf:type  sc:Project .
+
+sc:sara  rdf:type    sc:Woman ;
+        sc:worksFor  sc:roboSoapStrategyProject , sc:soapAcademyIntCompany .
+
+sc:Project  rdf:type  owl:Class .
+
+sc:canSeeMonitor  rdf:type  owl:ObjectProperty ;
+        rdfs:domain  sc:Person ;
+        rdfs:range   sc:Person .
+
+sc:hasConversationParticipant
+        rdf:type       owl:ObjectProperty ;
+        rdfs:domain    sc:Conversation ;
+        rdfs:range     sc:Person ;
+        owl:inverseOf  sc:isPartOfConversation .
+
+sc:isGoodFriendTo  rdf:type  owl:SymmetricProperty ;
+        rdfs:domain  sc:Person ;
+        rdfs:range   sc:Person .
+
+sc:john  rdf:type    sc:Man ;
+        sc:worksFor  sc:roboSoapStrategyProject , sc:soapAcademyIntCompany .
+
+sc:domesticSoapSoftwareCompany
+        rdf:type  sc:Company .
+
+sc:Woman  rdf:type        owl:Class ;
+        rdfs:subClassOf   sc:Person ;
+        owl:complementOf  sc:Man .
+
+sc:kitchenConversation
+        rdf:type                       sc:Conversation ;
+        sc:hasConversationParticipant  sc:riki , sc:laura .
+
+sc:sophie  rdf:type  sc:Woman ;
+        sc:worksFor  sc:domesticSoapSoftwareCompany .
+
+sc:OnlineConversation
+        rdf:type         owl:Class ;
+        rdfs:subClassOf  sc:Conversation .
+
+sc:eveningConversation
+        rdf:type                       sc:Conversation ;
+        sc:hasConversationParticipant  sc:sam , sc:laura .
+
+sc:Conversation  rdf:type  owl:Class ;
+        rdfs:subClassOf  sc:WitnessedEvent .
+
+sc:soapAcademyIntCompany
+        rdf:type  sc:Company .
+
+sc:sam  rdf:type     sc:Man ;
+        sc:worksFor  sc:domesticSoapSoftwareCompany .
+
+sc:riki  rdf:type         sc:Man ;
+        sc:canSeeMonitor  sc:peter ;
+        sc:worksFor       sc:soapAcademyIntCompany .

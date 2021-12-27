@@ -1,0 +1,46 @@
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix sc:  <urn:soap/crime/ontology#> .
+
+
+  [r1:
+    (?pX sc:canShareSensitiveInfoIndirectTo ?p1),
+    (?p1 sc:isPartOfConversation ?conv1),
+    (?p2 sc:isPartOfConversation ?conv1),
+    ->
+    (?p1 sc:canShareSensitiveInfoTo ?p2)],
+
+  [r1a:
+    (?pX sc:canShareSensitiveInfoTo ?p1),
+    (?p1 sc:isPartOfConversation ?conv1),
+    (?p2 sc:isPartOfConversation ?conv1),
+    ->
+    (?p1 sc:canShareSensitiveInfoTo ?p2)],
+
+  [r2:
+    (?p1 sc:worksFor sc:roboSoapStrategyProject),
+    (?p2 sc:worksFor sc:roboSoapStrategyProject),
+   ->
+    (?p1 sc:canShareSensitiveInfoTo ?p2),
+    (?p2 sc:canShareSensitiveInfoTo ?p1)],
+
+  [r3:
+    (?pSomeone sc:canShareSensitiveInfoIndirectTo ?p1),
+    (?p1 sc:isGoodFriendTo ?p2),
+    (?p1 sc:loveButNotLovedProperty ?pX)
+   ->
+    (?p1 sc:canShareSensitiveInfoTo ?p2)],
+  [r4:
+    (?p1 sc:canShareSensitiveInfoTo ?p2),
+    (?p2 sc:canShareSensitiveInfoTo ?p3)
+   ->
+    (?p1 sc:canShareSensitiveInfoIndirectTo ?p3)],
+  [r4:
+    (?p1 sc:canShareSensitiveInfoIndirectTo ?p2),
+    (?p2 sc:canShareSensitiveInfoTo ?p3)
+   ->
+    (?p1 sc:canShareSensitiveInfoIndirectTo ?p3)],
+  [r5:
+    (?pSomeone sc:canShareSensitiveInfoIndirectTo ?p2),
+    (?p1 sc:canSeeMonitor ?p2)
+   ->
+    (?p2 sc:canShareSensitiveInfoTo ?p1)]

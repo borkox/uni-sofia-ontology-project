@@ -1,0 +1,35 @@
+<urn:soap/crime/ontology#peter>
+        <urn:soap/crime/ontology#canShareSensitiveInfoIndirectTo>
+                <urn:soap/crime/ontology#riki> , <urn:soap/crime/ontology#john> , <urn:soap/crime/ontology#sara> , <urn:soap/crime/ontology#peter> , <urn:soap/crime/ontology#laura> , <urn:soap/crime/ontology#sam> ;
+        <urn:soap/crime/ontology#canShareSensitiveInfoTo>
+                <urn:soap/crime/ontology#john> , <urn:soap/crime/ontology#riki> , <urn:soap/crime/ontology#sara> , <urn:soap/crime/ontology#peter> .
+
+<urn:soap/crime/ontology#riki>
+        <urn:soap/crime/ontology#canShareSensitiveInfoIndirectTo>
+                <urn:soap/crime/ontology#sam> , <urn:soap/crime/ontology#laura> , <urn:soap/crime/ontology#riki> ;
+        <urn:soap/crime/ontology#canShareSensitiveInfoTo>
+                <urn:soap/crime/ontology#riki> , <urn:soap/crime/ontology#laura> .
+
+<urn:soap/crime/ontology#john>
+        <urn:soap/crime/ontology#canShareSensitiveInfoIndirectTo>
+                <urn:soap/crime/ontology#sam> , <urn:soap/crime/ontology#laura> , <urn:soap/crime/ontology#riki> , <urn:soap/crime/ontology#peter> , <urn:soap/crime/ontology#sara> , <urn:soap/crime/ontology#john> ;
+        <urn:soap/crime/ontology#canShareSensitiveInfoTo>
+                <urn:soap/crime/ontology#peter> , <urn:soap/crime/ontology#sara> , <urn:soap/crime/ontology#john> .
+
+<urn:soap/crime/ontology#sam>
+        <urn:soap/crime/ontology#canShareSensitiveInfoIndirectTo>
+                <urn:soap/crime/ontology#laura> , <urn:soap/crime/ontology#riki> , <urn:soap/crime/ontology#sam> ;
+        <urn:soap/crime/ontology#canShareSensitiveInfoTo>
+                <urn:soap/crime/ontology#sam> , <urn:soap/crime/ontology#laura> .
+
+<urn:soap/crime/ontology#sara>
+        <urn:soap/crime/ontology#canShareSensitiveInfoIndirectTo>
+                <urn:soap/crime/ontology#sam> , <urn:soap/crime/ontology#laura> , <urn:soap/crime/ontology#riki> , <urn:soap/crime/ontology#peter> , <urn:soap/crime/ontology#john> , <urn:soap/crime/ontology#sara> ;
+        <urn:soap/crime/ontology#canShareSensitiveInfoTo>
+                <urn:soap/crime/ontology#peter> , <urn:soap/crime/ontology#sara> , <urn:soap/crime/ontology#john> .
+
+<urn:soap/crime/ontology#laura>
+        <urn:soap/crime/ontology#canShareSensitiveInfoIndirectTo>
+                <urn:soap/crime/ontology#sam> , <urn:soap/crime/ontology#laura> , <urn:soap/crime/ontology#riki> ;
+        <urn:soap/crime/ontology#canShareSensitiveInfoTo>
+                <urn:soap/crime/ontology#riki> , <urn:soap/crime/ontology#sam> , <urn:soap/crime/ontology#laura> .
