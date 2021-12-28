@@ -64,8 +64,8 @@ public class CriminalStory {
 
         ObjectProperty canShareSensitiveInfoIndirectTo = inf
                 .createObjectProperty(NS + "canShareSensitiveInfoIndirectTo");
-        canShareSensitiveInfoTo.setDomain(personClass);
-        canShareSensitiveInfoTo.setRange(personClass);
+        canShareSensitiveInfoIndirectTo.setDomain(personClass);
+        canShareSensitiveInfoIndirectTo.setRange(personClass);
 
         // hasMotive is functional property
         ObjectProperty loveButNotLovedProperty = inf.createObjectProperty(NS + "loveButNotLoved", true);

@@ -5,7 +5,9 @@
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 
 sc:canShareSensitiveInfoIndirectTo
-        rdf:type  owl:ObjectProperty .
+        rdf:type     owl:ObjectProperty ;
+        rdfs:domain  sc:Person ;
+        rdfs:range   sc:Person .
 
 sc:Man  rdf:type         owl:Class ;
         rdfs:subClassOf  sc:Person .
