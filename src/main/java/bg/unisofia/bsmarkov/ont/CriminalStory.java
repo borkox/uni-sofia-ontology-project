@@ -36,6 +36,7 @@ public class CriminalStory {
         conversation.addSubClass(onlineConversation);
 
         ObjectProperty worksFor = inf.createObjectProperty(NS + "worksFor");
+        worksFor.setDomain(personClass);
         worksFor.setRange(companyClass);
         worksFor.addRange(projectClass);
 

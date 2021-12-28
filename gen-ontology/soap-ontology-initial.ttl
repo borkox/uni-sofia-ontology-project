@@ -11,7 +11,8 @@ sc:Man  rdf:type         owl:Class ;
         rdfs:subClassOf  sc:Person .
 
 sc:worksFor  rdf:type  owl:ObjectProperty ;
-        rdfs:range  sc:Project , sc:Company .
+        rdfs:domain  sc:Person ;
+        rdfs:range   sc:Project , sc:Company .
 
 sc:isPartOfConversation
         rdf:type     owl:ObjectProperty ;
