@@ -34,12 +34,12 @@
     (?p2 sc:canShareSensitiveInfoTo ?p3)
    ->
     (?p1 sc:canShareSensitiveInfoIndirectTo ?p3)],
-  [r4:
+  [r5:
     (?p1 sc:canShareSensitiveInfoIndirectTo ?p2),
     (?p2 sc:canShareSensitiveInfoTo ?p3)
    ->
     (?p1 sc:canShareSensitiveInfoIndirectTo ?p3)],
-  [r5:
+  [r6:
     (?pSomeone sc:canShareSensitiveInfoIndirectTo ?p2),
     (?p1 sc:canSeeMonitor ?p2)
    ->
