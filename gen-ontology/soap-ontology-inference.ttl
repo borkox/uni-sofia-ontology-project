@@ -9,11 +9,7 @@ rdfs:domain  rdf:type       rdf:Property , rdfs:Resource ;
         rdfs:range          rdfs:Class , rdfs:Resource ;
         rdfs:subPropertyOf  rdfs:domain .
 
-owl:Property  rdf:type       rdfs:Class , rdfs:Resource , owl:Class ;
-        rdfs:subClassOf      owl:Property , rdfs:Resource ;
-        owl:equivalentClass  owl:Property .
-
-owl:DatatypeProperty  rdf:type  rdfs:Class , rdfs:Resource ;
+owl:DatatypeProperty  rdf:type  rdfs:Resource , rdfs:Class ;
         rdfs:subClassOf  rdf:Property .
 
 sc:Woman  rdf:type           rdfs:Class , owl:Class , rdfs:Resource ;
@@ -21,12 +17,16 @@ sc:Woman  rdf:type           rdfs:Class , owl:Class , rdfs:Resource ;
         owl:complementOf     sc:Man ;
         owl:equivalentClass  sc:Woman .
 
+owl:Property  rdf:type       rdfs:Class , rdfs:Resource , owl:Class ;
+        rdfs:subClassOf      owl:Property , rdfs:Resource ;
+        owl:equivalentClass  owl:Property .
+
 owl:imports  rdf:type       owl:OntologyProperty , rdf:Property , rdfs:Resource ;
         rdfs:domain         owl:Ontology , rdfs:Resource ;
         rdfs:range          owl:Ontology , rdfs:Resource ;
         rdfs:subPropertyOf  owl:imports .
 
-xsd:negativeInteger  rdf:type  rdfs:Datatype , rdfs:Class , rdfs:Resource .
+xsd:negativeInteger  rdf:type  rdfs:Datatype , rdfs:Resource , rdfs:Class .
 
 owl:ObjectProperty  rdf:type  rdfs:Class , rdfs:Resource ;
         rdfs:subClassOf  rdf:Property .
@@ -37,12 +37,12 @@ owl:intersectionOf  rdf:type  rdf:Property , rdfs:Resource ;
 
 sc:LeakInfoSourcePeople
         rdf:type             rdfs:Class , owl:Class , rdfs:Resource ;
-        rdfs:subClassOf      sc:LeakInfoSourcePeople , _:b0 , owl:Thing , rdfs:Resource , _:b1 , sc:Person ;
+        rdfs:subClassOf      sc:LeakInfoSourcePeople , _:b0 , _:b1 , owl:Thing , rdfs:Resource , sc:Person ;
         owl:equivalentClass  sc:LeakInfoSourcePeople ;
         owl:intersectionOf   [ rdf:type   rdfs:Resource , rdf:List ;
-                               rdf:first  _:b1 ;
+                               rdf:first  _:b0 ;
                                rdf:rest   [ rdf:type   rdf:List , rdfs:Resource ;
-                                            rdf:first  _:b0 ;
+                                            rdf:first  _:b1 ;
                                             rdf:rest   ()
                                           ]
                              ] .
@@ -86,7 +86,7 @@ owl:onProperty  rdf:type    rdf:Property , rdfs:Resource ;
         rdfs:range          owl:Property , rdfs:Resource ;
         rdfs:subPropertyOf  owl:onProperty .
 
-owl:differentFrom  rdf:type  owl:SymmetricProperty , owl:ObjectProperty , rdf:Property , rdfs:Resource ;
+owl:differentFrom  rdf:type  owl:SymmetricProperty , rdf:Property , owl:ObjectProperty , rdfs:Resource ;
         rdfs:subPropertyOf  owl:differentFrom .
 
 owl:disjointWith  rdf:type  owl:SymmetricProperty , owl:ObjectProperty , rdf:Property , rdfs:Resource ;
@@ -109,10 +109,16 @@ sc:canShareSensitiveInfoIndirectTo
         rdfs:range          owl:Thing , sc:Person , rdfs:Resource ;
         rdfs:subPropertyOf  sc:canShareSensitiveInfoIndirectTo .
 
+_:b0    rdf:type             rdfs:Class , owl:Class , owl:Restriction , rdfs:Resource ;
+        rdfs:subClassOf      _:b0 , rdfs:Resource , owl:Thing , sc:Person ;
+        owl:equivalentClass  _:b0 ;
+        owl:hasValue         sc:roboSoapStrategyProject ;
+        owl:onProperty       sc:worksFor .
+
 rdf:Alt  rdf:type        rdfs:Class , rdfs:Resource ;
         rdfs:subClassOf  rdfs:Container .
 
-xsd:duration  rdf:type    rdfs:Datatype , rdfs:Class , rdfs:Resource , owl:Class ;
+xsd:duration  rdf:type    rdfs:Datatype , rdfs:Resource , rdfs:Class , owl:Class ;
         owl:disjointWith  xsd:long , xsd:byte , xsd:unsignedShort , xsd:time , xsd:unsignedLong , xsd:dateTime , xsd:float , xsd:int , xsd:string , xsd:unsignedInt , xsd:short , xsd:nonNegativeInteger , xsd:unsignedByte , xsd:date , xsd:boolean , xsd:decimal , xsd:integer , xsd:nonPositiveInteger .
 
 owl:Class  rdf:type          rdfs:Class , rdfs:Resource , owl:Class ;
@@ -139,7 +145,7 @@ owl:FunctionalProperty
         rdf:type         rdfs:Class , rdfs:Resource ;
         rdfs:subClassOf  rdf:Property .
 
-rdf:Seq  rdf:type        rdfs:Class , rdfs:Resource ;
+rdf:Seq  rdf:type        rdfs:Resource , rdfs:Class ;
         rdfs:subClassOf  rdfs:Container .
 
 xsd:unsignedByte  rdf:type   rdfs:Datatype , rdfs:Class , rdfs:Resource , owl:Class ;
@@ -151,7 +157,7 @@ owl:SymmetricProperty
         rdf:type         rdfs:Class , rdfs:Resource ;
         rdfs:subClassOf  owl:ObjectProperty .
 
-xsd:gMonthDay  rdf:type  rdfs:Datatype , rdfs:Class , rdfs:Resource .
+xsd:gMonthDay  rdf:type  rdfs:Datatype , rdfs:Resource , rdfs:Class .
 
 rdfs:ContainerMembershipProperty
         rdf:type         rdfs:Class , rdfs:Resource ;
@@ -160,13 +166,13 @@ rdfs:ContainerMembershipProperty
 owl:inverseOf  rdf:type     rdf:Property , rdfs:Resource ;
         rdfs:subPropertyOf  owl:inverseOf .
 
-sc:Person  rdf:type          rdfs:Class , owl:Class , rdfs:Resource ;
-        rdfs:subClassOf      owl:Thing , sc:Person , rdfs:Resource ;
-        owl:equivalentClass  sc:Person .
-
 rdf:Property  rdf:type       rdfs:Class , rdfs:Resource , owl:Class ;
         rdfs:subClassOf      rdf:Property , rdfs:Resource ;
         owl:equivalentClass  rdf:Property .
+
+sc:Person  rdf:type          rdfs:Class , owl:Class , rdfs:Resource ;
+        rdfs:subClassOf      owl:Thing , sc:Person , rdfs:Resource ;
+        owl:equivalentClass  sc:Person .
 
 xsd:nonNegativeInteger
         rdf:type             rdfs:Datatype , rdfs:Class , rdfs:Resource , owl:Class ;
@@ -177,14 +183,14 @@ xsd:nonNegativeInteger
 owl:sameAs  rdf:type        owl:SymmetricProperty , owl:ObjectProperty , rdf:Property , rdfs:Resource ;
         rdfs:subPropertyOf  owl:sameAs .
 
-rdf:XMLLiteral  rdf:type  rdfs:Datatype , rdfs:Resource , rdfs:Class .
+rdf:XMLLiteral  rdf:type  rdfs:Datatype , rdfs:Class , rdfs:Resource .
 
 xsd:unsignedShort  rdf:type  rdfs:Datatype , rdfs:Class , rdfs:Resource , owl:Class ;
         rdfs:subClassOf      xsd:unsignedLong , xsd:unsignedInt , xsd:int , xsd:integer , xsd:long , xsd:short , xsd:nonNegativeInteger , xsd:unsignedShort ;
         owl:disjointWith     xsd:time , xsd:dateTime , xsd:float , xsd:string , xsd:duration , xsd:date , xsd:boolean ;
         owl:equivalentClass  xsd:unsignedShort .
 
-xsd:gDay  rdf:type  rdfs:Datatype , rdfs:Class , rdfs:Resource .
+xsd:gDay  rdf:type  rdfs:Datatype , rdfs:Resource , rdfs:Class .
 
 owl:complementOf  rdf:type  rdf:Property , rdfs:Resource ;
         rdfs:subPropertyOf  owl:complementOf .
@@ -199,7 +205,7 @@ rdfs:range  rdf:type        rdf:Property , rdfs:Resource ;
 rdfs:isDefinedBy  rdf:type  rdf:Property , rdfs:Resource ;
         rdfs:subPropertyOf  rdfs:seeAlso , rdfs:isDefinedBy .
 
-xsd:boolean  rdf:type     rdfs:Datatype , rdfs:Resource , rdfs:Class , owl:Class ;
+xsd:boolean  rdf:type     rdfs:Datatype , rdfs:Class , rdfs:Resource , owl:Class ;
         owl:disjointWith  xsd:long , xsd:byte , xsd:unsignedShort , xsd:time , xsd:unsignedLong , xsd:dateTime , xsd:float , xsd:int , xsd:string , xsd:unsignedInt , xsd:short , xsd:nonNegativeInteger , xsd:duration , xsd:unsignedByte , xsd:date , xsd:decimal , xsd:integer , xsd:nonPositiveInteger .
 
 owl:Nothing  rdf:type        rdfs:Class , owl:Class , rdfs:Resource ;
@@ -217,7 +223,7 @@ sc:hasConversationParticipant
         rdfs:subPropertyOf  sc:hasConversationParticipant ;
         owl:inverseOf       sc:isPartOfConversation .
 
-xsd:hexBinary  rdf:type  rdfs:Datatype , rdfs:Resource , rdfs:Class .
+xsd:hexBinary  rdf:type  rdfs:Datatype , rdfs:Class , rdfs:Resource .
 
 owl:oneOf  rdf:type         rdf:Property , rdfs:Resource ;
         rdfs:domain         owl:Class , rdfs:Resource , rdfs:Class ;
@@ -233,12 +239,6 @@ sc:Company  rdf:type         rdfs:Class , owl:Class , rdfs:Resource ;
 xsd:decimal  rdf:type     rdfs:Datatype , rdfs:Class , rdfs:Resource , owl:Class ;
         owl:disjointWith  xsd:time , xsd:dateTime , xsd:float , xsd:string , xsd:duration , xsd:date , xsd:boolean .
 
-_:b1    rdf:type             rdfs:Class , owl:Class , owl:Restriction , rdfs:Resource ;
-        rdfs:subClassOf      _:b1 , rdfs:Resource , owl:Thing , sc:Person ;
-        owl:equivalentClass  _:b1 ;
-        owl:hasValue         sc:roboSoapStrategyProject ;
-        owl:onProperty       sc:worksFor .
-
 sc:OnlineConversation
         rdf:type             rdfs:Class , owl:Class , rdfs:Resource ;
         rdfs:subClassOf      sc:OnlineConversation , rdfs:Resource , owl:Thing , sc:Conversation , sc:WitnessedEvent , sc:Event ;
@@ -247,7 +247,7 @@ sc:OnlineConversation
 xsd:dateTime  rdf:type    rdfs:Datatype , rdfs:Resource , rdfs:Class , owl:Class ;
         owl:disjointWith  xsd:long , xsd:byte , xsd:unsignedShort , xsd:time , xsd:unsignedLong , xsd:float , xsd:int , xsd:string , xsd:unsignedInt , xsd:short , xsd:nonNegativeInteger , xsd:duration , xsd:unsignedByte , xsd:date , xsd:boolean , xsd:decimal , xsd:integer , xsd:nonPositiveInteger .
 
-xsd:date  rdf:type        rdfs:Datatype , rdfs:Class , rdfs:Resource , owl:Class ;
+xsd:date  rdf:type        rdfs:Datatype , rdfs:Resource , rdfs:Class , owl:Class ;
         owl:disjointWith  xsd:long , xsd:byte , xsd:unsignedShort , xsd:time , xsd:unsignedLong , xsd:dateTime , xsd:float , xsd:int , xsd:string , xsd:unsignedInt , xsd:short , xsd:nonNegativeInteger , xsd:duration , xsd:unsignedByte , xsd:boolean , xsd:decimal , xsd:integer , xsd:nonPositiveInteger .
 
 xsd:int  rdf:type            rdfs:Datatype , rdfs:Class , rdfs:Resource , owl:Class ;
@@ -260,12 +260,6 @@ xsd:gYear  rdf:type  rdfs:Datatype , rdfs:Class , rdfs:Resource .
 rdf:predicate  rdf:type     rdf:Property , rdfs:Resource ;
         rdfs:domain         rdf:Statement , rdfs:Resource ;
         rdfs:subPropertyOf  rdf:predicate .
-
-_:b0    rdf:type             owl:Class , rdfs:Class , owl:Restriction , rdfs:Resource ;
-        rdfs:subClassOf      _:b0 , rdfs:Resource , owl:Thing , sc:Person ;
-        owl:equivalentClass  _:b0 ;
-        owl:minCardinality   "1"^^xsd:int ;
-        owl:onProperty       sc:canShareSensitiveInfoIndirectTo .
 
 sc:LeakInfoDestinationPeople
         rdf:type             rdfs:Class , owl:Class , owl:Restriction , rdfs:Resource ;
@@ -318,7 +312,7 @@ sc:isPartOfConversation
         owl:inverseOf       sc:hasConversationParticipant .
 
 owl:TransitiveProperty
-        rdf:type         rdfs:Resource , rdfs:Class ;
+        rdf:type         rdfs:Class , rdfs:Resource ;
         rdfs:subClassOf  owl:ObjectProperty .
 
 rdf:rest  rdf:type          owl:FunctionalProperty , rdf:Property , rdfs:Resource ;
@@ -345,7 +339,7 @@ xsd:short  rdf:type          rdfs:Datatype , rdfs:Class , rdfs:Resource , owl:Cl
         owl:disjointWith     xsd:time , xsd:dateTime , xsd:float , xsd:string , xsd:duration , xsd:date , xsd:boolean ;
         owl:equivalentClass  xsd:short .
 
-xsd:positiveInteger  rdf:type  rdfs:Datatype , rdfs:Resource , rdfs:Class .
+xsd:positiveInteger  rdf:type  rdfs:Datatype , rdfs:Class , rdfs:Resource .
 
 rdf:type  rdf:type          rdf:Property , rdfs:Resource ;
         rdfs:range          rdfs:Class , rdfs:Resource ;
@@ -382,6 +376,12 @@ xsd:unsignedInt  rdf:type    rdfs:Datatype , rdfs:Class , rdfs:Resource , owl:Cl
         rdfs:subClassOf      xsd:unsignedLong , xsd:unsignedInt , xsd:int , xsd:integer , xsd:long , xsd:nonNegativeInteger ;
         owl:disjointWith     xsd:time , xsd:dateTime , xsd:float , xsd:string , xsd:duration , xsd:date , xsd:boolean ;
         owl:equivalentClass  xsd:unsignedInt .
+
+_:b1    rdf:type             owl:Class , rdfs:Class , owl:Restriction , rdfs:Resource ;
+        rdfs:subClassOf      rdfs:Resource , owl:Thing , _:b1 , sc:Person ;
+        owl:equivalentClass  _:b1 ;
+        owl:minCardinality   "1"^^xsd:int ;
+        owl:onProperty       sc:canShareSensitiveInfoIndirectTo .
 
 rdf:subject  rdf:type       rdf:Property , rdfs:Resource ;
         rdfs:domain         rdf:Statement , rdfs:Resource ;
@@ -420,21 +420,21 @@ sc:worksFor  rdf:type       rdf:Property , owl:ObjectProperty , owl:Property , r
         rdfs:range          owl:Thing , sc:Project , sc:Company , rdfs:Resource ;
         rdfs:subPropertyOf  sc:worksFor .
 
-xsd:gYearMonth  rdf:type  rdfs:Datatype , rdfs:Resource , rdfs:Class .
+xsd:gYearMonth  rdf:type  rdfs:Datatype , rdfs:Class , rdfs:Resource .
 
-xsd:string  rdf:type      rdfs:Datatype , rdfs:Class , rdfs:Resource , owl:Class ;
+xsd:string  rdf:type      rdfs:Datatype , rdfs:Resource , rdfs:Class , owl:Class ;
         owl:disjointWith  xsd:long , xsd:byte , xsd:unsignedShort , xsd:time , xsd:unsignedLong , xsd:dateTime , xsd:float , xsd:int , xsd:unsignedInt , xsd:short , xsd:nonNegativeInteger , xsd:duration , xsd:unsignedByte , xsd:date , xsd:boolean , xsd:decimal , xsd:integer , xsd:nonPositiveInteger .
 
-sc:peter  rdf:type                  sc:Man , owl:Thing , rdfs:Resource , sc:Person , _:b1 ;
+sc:peter  rdf:type                  sc:Man , owl:Thing , rdfs:Resource , sc:Person , _:b0 ;
         owl:sameAs                  sc:peter ;
         sc:canShareSensitiveInfoIndirectTo
-                sc:sara , sc:john , sc:peter , sc:riki , sc:laura ;
-        sc:canShareSensitiveInfoTo  sc:riki , sc:peter , sc:john , sc:sara ;
+                sc:riki , sc:john , sc:sara , sc:peter , sc:laura , sc:sam ;
+        sc:canShareSensitiveInfoTo  sc:john , sc:riki , sc:sara , sc:peter ;
         sc:isPartOfConversation     sc:peterAndJohnChat ;
         sc:loveButNotLoved          sc:laura ;
         sc:worksFor                 sc:roboSoapStrategyProject , sc:soapAcademyIntCompany .
 
-sc:peterAndJohnChat  rdf:type          sc:OnlineConversation , owl:Thing , sc:Conversation , rdfs:Resource , sc:Event , sc:WitnessedEvent ;
+sc:peterAndJohnChat  rdf:type          sc:OnlineConversation , owl:Thing , sc:Conversation , rdfs:Resource , sc:WitnessedEvent , sc:Event ;
         owl:sameAs                     sc:peterAndJohnChat ;
         sc:hasConversationParticipant  sc:john , sc:peter .
 
@@ -452,17 +452,17 @@ sc:roboSoapStrategyProject
         rdf:type    sc:Project , owl:Thing , sc:Company , rdfs:Resource ;
         owl:sameAs  sc:roboSoapStrategyProject .
 
-sc:sara  rdf:type                   sc:Woman , owl:Thing , rdfs:Resource , sc:Person , _:b1 ;
+sc:sara  rdf:type                   sc:Woman , owl:Thing , rdfs:Resource , sc:Person , _:b0 ;
         owl:sameAs                  sc:sara ;
         sc:canShareSensitiveInfoIndirectTo
-                sc:riki , sc:sara , sc:john , sc:peter ;
+                sc:sam , sc:laura , sc:riki , sc:sara , sc:john , sc:peter ;
         sc:canShareSensitiveInfoTo  sc:john , sc:sara , sc:peter ;
         sc:worksFor                 sc:roboSoapStrategyProject , sc:soapAcademyIntCompany .
 
-sc:john  rdf:type                   sc:Man , owl:Thing , rdfs:Resource , sc:Person , _:b1 ;
+sc:john  rdf:type                   sc:Man , owl:Thing , rdfs:Resource , sc:Person , _:b0 ;
         owl:sameAs                  sc:john ;
         sc:canShareSensitiveInfoIndirectTo
-                sc:riki , sc:peter , sc:sara , sc:john ;
+                sc:sam , sc:laura , sc:riki , sc:peter , sc:sara , sc:john ;
         sc:canShareSensitiveInfoTo  sc:peter , sc:john , sc:sara ;
         sc:isPartOfConversation     sc:peterAndJohnChat ;
         sc:worksFor                 sc:roboSoapStrategyProject , sc:soapAcademyIntCompany .
@@ -472,7 +472,7 @@ sc:domesticSoapSoftwareCompany
         owl:sameAs  sc:domesticSoapSoftwareCompany .
 
 sc:kitchenConversation
-        rdf:type                       sc:Conversation , owl:Thing , sc:WitnessedEvent , rdfs:Resource , sc:Event ;
+        rdf:type                       sc:Conversation , owl:Thing , rdfs:Resource , sc:Event , sc:WitnessedEvent ;
         owl:sameAs                     sc:kitchenConversation ;
         sc:hasConversationParticipant  sc:riki , sc:laura .
 
@@ -527,6 +527,3 @@ _:b4    rdf:type    owl:Thing , rdfs:Resource , sc:Person ;
 
 _:b5    rdf:type    owl:Thing , rdfs:Resource , sc:Person ;
         owl:sameAs  _:b5 .
-
-_:b6    rdf:type    owl:Thing , rdfs:Resource , sc:Person ;
-        owl:sameAs  _:b6 .

@@ -64,6 +64,12 @@ The story is described with CriminalStory.java;
 CriminalInference.jav contains additional restrictions to be used as classes later on;
 CriminalDeduction.java invokes 3 SPARQL queries to make deductions.
 
+## Initial Ontology
+Initial ontology contains only starting classes and later will 
+be enhanced.
+
+![Initial Ontology](doc/soap-ontology-initial.svg)
+
 ## Rules
 
 The following rules have been used to create and orchestrate instances
@@ -106,12 +112,12 @@ with property "canShareSensitiveInfoIndirectTo" which helps later on in the quer
     (?p2 sc:canShareSensitiveInfoTo ?p3)
    ->
     (?p1 sc:canShareSensitiveInfoIndirectTo ?p3)],
-  [r4:
+  [r5:
     (?p1 sc:canShareSensitiveInfoIndirectTo ?p2),
     (?p2 sc:canShareSensitiveInfoTo ?p3)
    ->
     (?p1 sc:canShareSensitiveInfoIndirectTo ?p3)],
-  [r5:
+  [r6:
     (?pSomeone sc:canShareSensitiveInfoIndirectTo ?p2),
     (?p1 sc:canSeeMonitor ?p2)
    ->
