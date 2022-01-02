@@ -40,6 +40,9 @@ He then understands that:
     that Laura talked to her cousin Sam.
  * Sam works for "Domestic Soap Software".
  * Laura and Riki always talk in the kitchen in the office.
+ * Sophie and Sam are colleagues.
+
+![Initial Ontology](doc/Drawing_EN.svg)
 
 We will show how the detective finds the potential leak of 
 information with the help of Apache Jen project and OWL DL language.
@@ -69,6 +72,7 @@ Initial ontology contains only starting classes and later will
 be enhanced.
 
 ![Initial Ontology](doc/soap-ontology-initial.svg)
+
 
 ## Rules
 
